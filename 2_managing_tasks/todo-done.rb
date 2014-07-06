@@ -7,3 +7,14 @@ File.open('todo.txt', 'r') do |file|
     counter = 1
     file.readlines.each do |line|
       name, created, completed = line.chomp.split(/,/)
+      if task_number == counter
+        new_file.puts("#{name},#{created},#{Time.now}")
+        puts "Task #{counter} completed"
+      else
+        new_file.puts("#{name},#{created},#{completed}")
+      end
+      counter += 1
+    end
+  end
+end
+`mv todo.txt.new todo.txt`
